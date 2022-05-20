@@ -1,22 +1,19 @@
 package com.example.supervisionnetworkInterface;
 
-import com.example.supervisionNetwork.SnmpGet;
+import com.example.supervisionNetwork.SnmpGetList;
+import com.example.supervisionNetwork.SnmpUtil;
 import javafx.event.ActionEvent;
-import javafx.scene.control.TableView;
-import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
 import org.snmp4j.event.ResponseEvent;
 import org.snmp4j.mp.SnmpConstants;
-import org.snmp4j.smi.Address;
-import org.snmp4j.smi.GenericAddress;
-import org.snmp4j.smi.OID;
-import org.snmp4j.smi.OctetString;
-import org.snmp4j.smi.VariableBinding;
+import org.snmp4j.smi.*;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RParAdd {
     public static final int DEFAULT_VERSION = SnmpConstants.version2c;
@@ -24,7 +21,6 @@ public class RParAdd {
     public static final int DEFAULT_PORT = 161;
     public static final long DEFAULT_TIMEOUT = 3 * 1000L;
     public static final int DEFAULT_RETRY = 3;
-
     public static CommunityTarget createDefault(String ip, String community) {
         Address address = GenericAddress.parse(DEFAULT_PROTOCOL + ":" + ip
                 + "/" + DEFAULT_PORT);
@@ -37,20 +33,28 @@ public class RParAdd {
         return target;
     }
 
-    public static void snmpGet(String ip, String community, String oid) {
+    /**
+     *
+     * @param ip
+     * @param community
+     */
+    public static void snmpGetList(String ip, String community,
+                                   List<String> oidList) {
+        CommunityTarget target = SnmpUtil.createDefault(ip, community);
 
-        CommunityTarget target = createDefault(ip, community);
         Snmp snmp = null;
         try {
             PDU pdu = new PDU();
-            // pdu.add(new VariableBinding(new OID(new int[]
-            // {1,3,6,1,2,1,1,2})));
-            pdu.add(new VariableBinding(new OID(oid)));
+
+            for (String oid : oidList) {
+                pdu.add(new VariableBinding(new OID(oid)));
+            }
 
             DefaultUdpTransportMapping transport = new DefaultUdpTransportMapping();
+            transport.listen();
             snmp = new Snmp(transport);
-            snmp.listen();
-            System.out.println("-------> 发送PDU <-------");
+
+            System.out.println("------->发送消息<-------");
             pdu.setType(PDU.GET);
             ResponseEvent respEvent = snmp.send(pdu, target);
             System.out.println("PeerAddress:" + respEvent.getPeerAddress());
@@ -59,28 +63,16 @@ public class RParAdd {
             if (response == null) {
                 System.out.println("response is null, request time out");
             } else {
-
-                // Vector<VariableBinding> vbVect =
-                // response.getVariableBindings();
-                // System.out.println("vb size:" + vbVect.size());
-                // if (vbVect.size() == 0) {
-                // System.out.println("response vb size is 0 ");
-                // } else {
-                // VariableBinding vb = vbVect.firstElement();
-                // System.out.println(vb.getOid() + " = " + vb.getVariable());
-                // }
-
                 System.out.println("response pdu size is " + response.size());
                 for (int i = 0; i < response.size(); i++) {
                     VariableBinding vb = response.get(i);
                     System.out.println(vb.getOid() + " = " + vb.getVariable());
                 }
-
             }
-            System.out.println("SNMP GET one OID value finished !");
+            System.out.println("SNMP GET List OID value finished !");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("SNMP Get Exception:" + e);
+            System.out.println("SNMP GetList Exception:" + e);
         } finally {
             if (snmp != null) {
                 try {
@@ -89,15 +81,20 @@ public class RParAdd {
                     snmp = null;
                 }
             }
-
         }
+
     }
+
     public void scanparaddress(ActionEvent actionEvent) {
-        TableView table = new TableView();
-        
-        String ip = "192.168.43.46";
+
+
+        String ip = "192.168.100.147";
         String community = "public";
-        String oidval = "1.3.6.1.2.1.1.1.0";
-        SnmpGet.snmpGet(ip, community, oidval);
+        List<String> oidList = new ArrayList<String>();
+        oidList.add(".1.3.6.1.2.1.1.1.0");
+        oidList.add(".1.3.6.1.2.1.1.3.0");
+        oidList.add(".1.3.6.1.2.1.1.5.0");
+
+        SnmpGetList.snmpGetList(ip, community, oidList);
     }
 }
