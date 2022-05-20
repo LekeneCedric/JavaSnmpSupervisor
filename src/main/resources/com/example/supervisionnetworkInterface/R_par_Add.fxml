@@ -17,6 +17,6 @@
             <Cursor fx:constant="NW_RESIZE" />
          </cursor>
       </TableView>
-      <Button layoutX="458.0" layoutY="49.0" mnemonicParsing="false" onAction="#scanparaddress" prefHeight="25.0" prefWidth="99.0" text="Scna" />
+      <Button layoutX="458.0" layoutY="49.0" mnemonicParsing="false" onAction="#scanparaddress" prefHeight="25.0" prefWidth="99.0" text="Find Machine" />
    </children>
 </AnchorPane>
