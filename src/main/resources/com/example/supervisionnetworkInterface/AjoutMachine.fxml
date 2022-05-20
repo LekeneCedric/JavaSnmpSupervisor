@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supervisionnetworkInterface.AjoutMachine">
+   <children>
+      <Button layoutX="320.0" layoutY="63.0" mnemonicParsing="false" onAction="#ajtAddressMAC" text="Ajouter" />
+      <TextField fx:id="addressNAC" layoutX="131.0" layoutY="63.0" promptText="Entrez L'addresse MAC" />
+      <Label layoutX="26.0" layoutY="67.0" text="Addresse MAC" />
+   </children>
+</AnchorPane>

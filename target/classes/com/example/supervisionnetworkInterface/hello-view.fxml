@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="319.0" prefWidth="458.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supervisionnetworkInterface.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Pane prefHeight="229.0" prefWidth="418.0">
+         <children>
+            <Label layoutX="25.0" layoutY="31.0" text="Identifiant" />
+            <Label layoutX="27.0" layoutY="83.0" text="Mot De Passe" />
+            <PasswordField layoutX="150.0" layoutY="82.0" promptText="Entrez Mot De Passe" />
+            <TextField layoutX="148.0" layoutY="31.0" promptText="Entrez Votre Identifiant" />
+            <Button fx:id="connexion" layoutX="137.0" layoutY="166.0" mnemonicParsing="false" onAction="#connection" prefHeight="30.0" prefWidth="144.0" text="Connexion" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

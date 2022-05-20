@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="439.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supervisionnetworkInterface.RParAdd">
+   <children>
+      <Label layoutX="88.0" layoutY="53.0" text="Addresse IP :" />
+      <TextField fx:id="addressIP" layoutX="197.0" layoutY="49.0" prefHeight="25.0" prefWidth="210.0" promptText="Entrez L'addresse IP" />
+      <TableView fx:id="hostInfo" layoutX="88.0" layoutY="103.0" prefHeight="301.0" prefWidth="605.0">
+        <columns>
+          <TableColumn prefWidth="300.0" text="Information" />
+          <TableColumn prefWidth="304.0" text="Details" />
+        </columns>
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </TableView>
+      <Button layoutX="458.0" layoutY="49.0" mnemonicParsing="false" onAction="#scanparaddress" prefHeight="25.0" prefWidth="99.0" text="Scna" />
+   </children>
+</AnchorPane>
