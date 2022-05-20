@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="529.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supervisionnetwork.Gestionaire">
+   <children>
+      <Pane layoutX="3.0" layoutY="57.0" prefHeight="33.0" prefWidth="771.0">
+         <children>
+            <Button layoutY="-4.0" mnemonicParsing="false" onAction="#rparadd" prefHeight="36.0" prefWidth="160.0" text="Recherche Par Addresse" />
+            <Button layoutX="161.0" layoutY="-4.0" mnemonicParsing="false" onAction="#rparplage" prefHeight="36.0" prefWidth="160.0" text="Recherche Par Plage" />
+            <Button layoutX="321.0" layoutY="-4.0" mnemonicParsing="false" onAction="#rcmplte" prefHeight="36.0" prefWidth="177.0" text="Recherche Complete" />
+            <Button layoutX="498.0" layoutY="-4.0" mnemonicParsing="false" onAction="#ajoutmachine" prefHeight="36.0" prefWidth="103.0" text="Ajout Machine" />
+            <Button layoutX="601.0" layoutY="-4.0" mnemonicParsing="false" onAction="#supmachine" prefHeight="36.0" prefWidth="169.0" text="Supprimer Machine" />
+         </children>
+      </Pane>
+      <Pane fx:id="ginterfaceGest" layoutX="-2.0" layoutY="88.0" prefHeight="440.0" prefWidth="781.0">
+         <children>
+            <Label layoutX="208.0" layoutY="152.0" prefHeight="134.0" prefWidth="421.0" text="INTERFACE DU GESTIONAIRE" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="-1.0" prefHeight="52.0" prefWidth="781.0">
+         <children>
+            <Label layoutX="23.0" layoutY="5.0" prefHeight="46.0" prefWidth="275.0" text="GESTIONAIRE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
