@@ -3,6 +3,7 @@ package com.example.supervisionnetworkInterface;
 import com.example.supervisionNetwork.SnmpGetList;
 import com.example.supervisionNetwork.SnmpUtil;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
@@ -21,6 +22,8 @@ public class RParAdd {
     public static final int DEFAULT_PORT = 161;
     public static final long DEFAULT_TIMEOUT = 3 * 1000L;
     public static final int DEFAULT_RETRY = 3;
+    public TextField addressIP;
+
     public static CommunityTarget createDefault(String ip, String community) {
         Address address = GenericAddress.parse(DEFAULT_PROTOCOL + ":" + ip
                 + "/" + DEFAULT_PORT);
@@ -88,7 +91,7 @@ public class RParAdd {
     public void scanparaddress(ActionEvent actionEvent) {
 
 
-        String ip = "192.168.100.147";
+        String ip = addressIP.getText().toString();
         String community = "public";
         List<String> oidList = new ArrayList<String>();
         oidList.add(".1.3.6.1.2.1.1.1.0");
