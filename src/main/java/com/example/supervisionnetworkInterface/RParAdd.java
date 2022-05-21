@@ -83,10 +83,22 @@ public class RParAdd  implements Initializable {
 
                 System.out.println("response pdu size is " + response.size());
                 for (int i = 0; i < response.size(); i++) {
-                      System.out.println("Nous somme a l'indice "+i);
+
                     VariableBinding vb = response.get(i);
-                    Patientlist.add(new Result(vb.getOid().toString(),vb.getVariable().toString()));
-                    hostInfo.setItems(Patientlist);
+                    if(i==0)
+                    {
+                        Patientlist.add(new Result("OS / Machine / Kernel version",vb.getVariable().toString()));
+                        hostInfo.setItems(Patientlist);
+                    } else if (i==1) {
+                        Patientlist.add(new Result("Duree d'activite",vb.getVariable().toString()));
+                        hostInfo.setItems(Patientlist);
+                    } else if (i==2) {
+                        Patientlist.add(new Result("Nom Machine",vb.getVariable().toString()));
+                        hostInfo.setItems(Patientlist);
+                    }
+
+
+
                 }
             }
 

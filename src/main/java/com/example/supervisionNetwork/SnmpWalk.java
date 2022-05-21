@@ -171,7 +171,7 @@ public class SnmpWalk {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String ip = "192.168.8.254";
+		String ip = "192.168.100.147";
 		String community = "public";
 		// 1.3.6.1.2.1.2.2.1.2
 		String targetOid = "1.3.6.1.2.1.2.2.1.2";//".1.3.6.1.2.1.1";

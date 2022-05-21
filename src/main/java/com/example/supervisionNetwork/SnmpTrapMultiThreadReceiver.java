@@ -78,7 +78,7 @@ public class SnmpTrapMultiThreadReceiver implements CommandResponder {
 
 	@SuppressWarnings("unchecked")
 	public void processPdu(CommandResponderEvent event) {
-		System.out.println("----> 开始解析ResponderEvent: <----");
+		System.out.println("----> ResponderEvent: <----");
 		if (event == null || event.getPDU() == null) {
 			System.out.println("[Warn] ResponderEvent or PDU is null");
 			return;

@@ -30,8 +30,8 @@ public class SnmpTrapSendDemo {
 	private CommunityTarget target = null;
 
 	public void init() throws IOException {
-		System.out.println("----> 初始 Trap 的IP和端口 <----");
-		target = createTarget4Trap("udp:127.0.0.1/162");
+		System.out.println("----> Trap <----");
+		target = createTarget4Trap("udp:192.168.100.147/162");
 		TransportMapping transport = new DefaultUdpTransportMapping();
 		snmp = new Snmp(transport);
 		transport.listen();
@@ -59,16 +59,6 @@ public class SnmpTrapSendDemo {
 		System.out.println("----> Trap Send END <----");
 	}
 
-	/**
-	 * 创建对象communityTarget
-	 * 
-	 * @param targetAddress
-	 * @param community
-	 * @param version
-	 * @param timeOut
-	 * @param retry
-	 * @return CommunityTarget
-	 */
 	public static CommunityTarget createTarget4Trap(String address) {
 		CommunityTarget target = new CommunityTarget();
 		target.setAddress(GenericAddress.parse(address));
