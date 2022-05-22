@@ -96,9 +96,6 @@ public class RParAdd  implements Initializable {
                         Patientlist.add(new Result("Nom Machine",vb.getVariable().toString()));
                         hostInfo.setItems(Patientlist);
                     }
-
-
-
                 }
             }
 

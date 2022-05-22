@@ -31,7 +31,7 @@ public class SnmpTrapSendDemo {
 
 	public void init() throws IOException {
 		System.out.println("----> Trap <----");
-		target = createTarget4Trap("udp:192.168.100.147/162");
+		target = createTarget4Trap("udp:192.168.0.101/162");
 		TransportMapping transport = new DefaultUdpTransportMapping();
 		snmp = new Snmp(transport);
 		transport.listen();
